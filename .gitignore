@@ -4,3 +4,7 @@
 
 # secret environment variables
 .env
+
+.vscode/
+
+.editorconfig
