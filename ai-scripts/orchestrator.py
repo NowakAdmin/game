@@ -3,6 +3,15 @@ import sys
 import re
 import json
 import openai
+from pathlib import Path
+
+# proste “dotenv” bez zewnętrznych zależności
+dotenv = Path(__file__).parent.parent / '.env'
+if dotenv.exists():
+    for line in dotenv.read_text().splitlines():
+        if line and not line.startswith('#') and '=' in line:
+            k, v = line.split('=', 1)
+            os.environ.setdefault(k.strip(), v.strip())
 
 # Ścieżki projektu
 SPEC_PATH = os.path.join(os.path.dirname(__file__), "..", "spec", "modules.md")
